@@ -9,6 +9,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import {Link} from "react-router-dom";
 import { IoBagOutline } from "react-icons/io5";
 import { TbLogout } from "react-icons/tb";
+import logo from "../../public/logo.png";
 function NavList() {
     return (
         <ul className="my-5 flex flex-col lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:justify-between">
@@ -68,7 +69,7 @@ const HeaderClient = () => {
                 variant="h6"
                 className="mr-4 cursor-pointer py-1.5"
                 >
-                    <img src="../../public/logo.png" alt="" />
+                    <img src={logo} alt="" />
                 </Typography>
                 <div className="hidden lg:block lg:w-1/2">
                     <NavList />

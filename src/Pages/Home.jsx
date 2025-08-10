@@ -1,10 +1,10 @@
 import React from "react"
 import { FaArrowRightLong } from "react-icons/fa6";
-
+import bgHome from "../../public/hero/hero-2.jpg";
 const Home = () => {
   return(
     <div>
-        <div className="h-screen bg-no-repeat" style={{backgroundImage:"url(../../public/hero/hero-2.jpg)"}}>
+        <div className="h-screen bg-no-repeat" style={{backgroundImage:`url(${bgHome})`}}>
             <div className="container mx-auto flex items-end h-[60%] md:h-1/2 2xl:h-[70%]">
                     <div className="py-5 w-full lg:w-1/2 px-4 lg:p-0 text-center lg:text-left">
                     <p className="text-red-500 py-3">SUMMER COLLECTION</p>
