@@ -20,25 +20,27 @@ const Home = () => {
             </div>
         </div>
         {/* end main content */}
+        {/* start shope */}
         <div className="container mx-auto h-[120vh] mt-11 flex flex-col md:grid md:grid-cols-12 md:grid-rows-12">
 
           <div className="col-start-8 col-end-12 justify-items-center">
             <img src={banner_1} alt="" />
           </div>
 
-          <p className="text-3xl md:text-5xl flex flex-col gap-3 text-[#475569] col-start-5 col-end-10 md:text-left text-center"><span>Clothing</span><span>Collection 2025</span><span className="text-sm underline">SHOP NOW</span></p>
+          <p className="col-start-5 col-end-10 text-3xl text-center flex flex-col gap-3 text-[#475569] md:text-left md:text-5xl"><span>Clothing</span><span>Collection 2025</span><span className="text-sm underline">SHOP NOW</span></p>
 
-          <div className="row-start-7 col-start-2 col-end-6 md:text-left text-center justify-items-center" >
+          <div className="row-start-7 col-start-2 col-end-6 justify-items-center md:justify-items-start" >
             <img src={banner_2} alt="" />
-            <p className="text-3xl md:text-5xl flex flex-col gap-3 text-[#475569] ">Accessories<span className="text-sm underline">SHOP NOW</span></p>
+            <p className="text-3xl flex flex-col gap-3 text-[#475569] md:text-5xl">Accessories<span className="text-sm underline">SHOP NOW</span></p>
           </div>
 
           <div className="row-start-9 col-start-8 col-end-12 justify-items-center" >
             <img src={banner_3} alt="" />
           </div>
 
-            <p className="text-3xl md:text-5xl flex flex-col gap-3 text-[#475569] row-start-10 col-start-7 col-end-10 md:text-left text-center">Shoes Spring <span>2025</span> <span className="text-sm underline">SHOP NOW</span></p>
+            <p className="row-start-10 col-start-7 col-end-10 text-3xl text-center  flex flex-col gap-3 text-[#475569] md:text-left md:text-5xl">Shoes Spring <span>2025</span> <span className="text-sm underline">SHOP NOW</span></p>
         </div>
+        {/* end shope  */}
     </div>
   )
 }
