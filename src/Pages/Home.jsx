@@ -29,7 +29,7 @@ const Home = () => {
 
           <p className="col-start-5 col-end-10 text-3xl text-center flex flex-col gap-3 text-[#475569] md:text-left md:text-5xl"><span>Clothing</span><span>Collection 2025</span><span className="text-sm underline">SHOP NOW</span></p>
 
-          <div className="row-start-7 col-start-2 col-end-6 justify-items-center md:justify-items-start" >
+          <div className="row-start-7 col-start-2 col-end-6 justify-items-center text-center md:text-left md:justify-items-start" >
             <img src={banner_2} alt="" />
             <p className="text-3xl flex flex-col gap-3 text-[#475569] md:text-5xl">Accessories<span className="text-sm underline">SHOP NOW</span></p>
           </div>
