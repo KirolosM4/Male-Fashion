@@ -19,7 +19,7 @@ const Shop = () => {
             url : "http://localhost:3000/products"
         }).then((res)=>{
             setProducts(res.data);
-            setDataIsGet(!dataIsget);
+            setDataIsGet(true);
         })
 
     }
