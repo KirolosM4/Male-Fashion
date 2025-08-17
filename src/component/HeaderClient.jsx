@@ -19,11 +19,11 @@ function NavList() {
                 color="blue-gray"
                 className="font-medium lg:flex lg:gap-7 text-center"
             >
-                <Link to="" className="block my-2 hover:text-blue-500 transition-colors">
+                <Link to="/" className="block my-2 hover:text-blue-500 transition-colors">
                     Home
                 </Link>
 
-                <Link to="" className="block my-2 hover:text-blue-500 transition-colors">
+                <Link to="shop" className="block my-2 hover:text-blue-500 transition-colors">
                     Shop
                 </Link>
             </Typography>
