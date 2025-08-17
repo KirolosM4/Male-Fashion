@@ -12,7 +12,7 @@ import { FaStar } from "react-icons/fa6";
 
 const Shop = () => {
     const [products,setProducts] = useState([]);
-    const [dataIsget,setDataIsGet] = useState(true);
+    const [dataIsget,setDataIsGet] = useState(false);
     const getAllProducts = () => {
         axios({
             method : "get",
