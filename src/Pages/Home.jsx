@@ -10,7 +10,7 @@ import second_lastSection from "../../public/last-section/2.jpg"
 import third_lastSection from "../../public/last-section/3.jpg"
 import fourth_lastSection from "../../public/last-section/4.jpg"
 import { FaStar } from "react-icons/fa6";
-
+import {Link} from "react-router-dom";
 const Home = () => {
   return(
     <div>
@@ -22,7 +22,7 @@ const Home = () => {
                     <p className="text-3xl md:text-5xl text-[#475569] py-1">Fall - Winter</p>
                     <p className="text-3xl md:text-5xl  text-[#475569] py-1">Collections 2023</p>
                     <p className="text-[#475569] py-3">A specialist label creating luxury essentials. Ethically crafted with an unwavering commitment to execeptional quality</p>
-                    <span className="bg-red-500 p-3 text-white">SHOP NOW  <FaArrowRightLong className="inline" /> </span>
+                    <span className="bg-red-500 p-3 text-white"><Link to="/shop"k>Shop Now</Link><FaArrowRightLong className="inline" /> </span>
                 </div>
             </div>
         </div>
@@ -34,18 +34,18 @@ const Home = () => {
             <img src={banner_1} alt="" className="w-[90%]" />
           </div>
 
-          <p className="col-start-5 col-end-10 text-3xl text-center flex flex-col gap-3 text-[#475569] md:text-left md:text-5xl"><span>Clothing</span><span>Collection 2025</span><span className="text-sm underline">SHOP NOW</span></p>
+          <p className="col-start-5 col-end-10 text-3xl text-center flex flex-col gap-3 text-[#475569] md:text-left md:text-5xl"><span>Clothing</span><span>Collection 2025</span><Link to="/shop" className="text-sm underline">SHOP NOW</Link></p>
 
           <div className="row-start-6 col-start-2 col-end-6 justify-items-center text-center md:text-left md:justify-items-start" >
             <img src={banner_2} alt="" className="w-[90%]" />
-            <p className="text-3xl flex flex-col gap-3 text-[#475569] md:text-5xl">Accessories<span className="text-sm underline">SHOP NOW</span></p>
+            <p className="text-3xl flex flex-col gap-3 text-[#475569] md:text-5xl">Accessories<Link to="/shop" className="text-sm underline">SHOP NOW</Link></p>
           </div>
 
           <div className="row-start-8 col-start-8 col-end-12 justify-items-center" >
             <img src={banner_3} alt="" className="w-[90%]"  />
           </div>
 
-            <p className="row-start-9 col-start-7 col-end-10 text-3xl text-center  flex flex-col gap-3 text-[#475569] md:text-left md:text-5xl">Shoes Spring <span>2025</span> <span className="text-sm underline">SHOP NOW</span></p>
+            <p className="row-start-9 col-start-7 col-end-10 text-3xl text-center  flex flex-col gap-3 text-[#475569] md:text-left md:text-5xl">Shoes Spring <span>2025</span> <Link to="/shop" className="text-sm underline">SHOP NOW</Link></p>
         </div>
         {/* end shope  */}
         {/* start shipping */}

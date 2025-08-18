@@ -35,7 +35,7 @@ const Shop = () => {
                 dataIsGet
                 ?
                 products.map(({image,title,rating,price,id})=>(
-                    <Card key={id}>
+                    <Card key={id} className="text-center md:text-left">
                         <CardHeader floated={false} className="h-80 flex justify-center items-center">
                             <img src={image} alt="profile-picture" className="w-1/2" />
                         </CardHeader>
