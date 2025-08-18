@@ -29,7 +29,7 @@ const Shop = () => {
     },[])
 
     return(
-        <div className={`container mx-auto g my-7 grid  ${dataIsget ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4" : "h-screen grid-cols-1 justify-items-center items-center w-screen"}`}>
+        <div className="container mx-auto g my-7 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 h-screen grid-cols-1 justify-items-center items-center w-screen">
             {
                 products.map(({image,title,rating,price,id})=>(
                     <Card key={id}>
