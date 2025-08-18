@@ -12,11 +12,11 @@ import { FaStar } from "react-icons/fa6";
 
 const Shop = () => {
     const [products,setProducts] = useState([]);
-    const [dataIsget,setDataIsGet] = useState(false);
+    const [dataIsGet,setDataIsGet] = useState(false);
     const getAllProducts = () => {
         axios({
             method : "get",
-            url : "http://localhost:3000/products"
+            url : "https://68a39589c123272fb9affd0c.mockapi.io/shop/products",
         }).then((res)=>{
             setProducts(res.data);
             setDataIsGet(true);
@@ -29,8 +29,11 @@ const Shop = () => {
     },[])
 
     return(
-        <div className="container mx-auto g my-7 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 h-screen grid-cols-1 justify-items-center items-center w-screen">
+        <div className={`container mx-auto g my-7 grid  ${dataIsGet ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4" : "h-screen grid-cols-1 justify-items-center items-center w-screen"}`}>
             {
+
+                dataIsGet
+                ?
                 products.map(({image,title,rating,price,id})=>(
                     <Card key={id}>
                         <CardHeader floated={false} className="h-80 flex justify-center items-center">
@@ -56,6 +59,8 @@ const Shop = () => {
                         </CardFooter>
                     </Card>
                 ))
+                :
+                <div className="loader"></div>
 
             }
         </div>
