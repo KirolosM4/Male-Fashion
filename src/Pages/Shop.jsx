@@ -26,15 +26,11 @@ const Shop = () => {
 
     useEffect(()=>{
         getAllProducts()
-        console.log(products)
     },[])
 
     return(
         <div className={`container mx-auto g my-7 grid  ${dataIsget ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4" : "h-screen grid-cols-1 justify-items-center items-center w-screen"}`}>
             {
-
-                dataIsget
-                ?
                 products.map(({image,title,rating,price,id})=>(
                     <Card key={id}>
                         <CardHeader floated={false} className="h-80 flex justify-center items-center">
@@ -60,8 +56,6 @@ const Shop = () => {
                         </CardFooter>
                     </Card>
                 ))
-                :
-                <div className="loader"></div>
 
             }
         </div>
