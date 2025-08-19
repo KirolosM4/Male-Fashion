@@ -9,10 +9,12 @@ import {
 } from "@material-tailwind/react";
 import axios from "axios"
 import { FaStar } from "react-icons/fa6";
+import { BsFillCartDashFill } from "react-icons/bs";
 
 const Shop = () => {
     const [products,setProducts] = useState([]);
     const [dataIsGet,setDataIsGet] = useState(false);
+    const [hover,setHover] = useState("");
     const getAllProducts = () => {
         axios({
             method : "get",
@@ -35,13 +37,17 @@ const Shop = () => {
                 dataIsGet
                 ?
                 products.map(({image,title,rating,price,id})=>(
-                    <Card key={id} className="text-center md:text-left">
+                    <Card key={id} className="text-center md:text-left" onMouseOver={()=>setHover(id)} onMouseLeave={()=>setHover("")}>
                         <CardHeader floated={false} className="h-80 flex justify-center items-center">
                             <img src={image} alt="profile-picture" className="w-1/2" />
                         </CardHeader>
-                        <CardBody>
-                            <Typography variant="h4" color="blue-gray" className="mb-2 text-xl">
-                                {title.slice(0,title.lastIndexOf (" "))}
+                        <CardBody className="px-6 py-0">
+                            <Typography variant="h4" color="blue-gray" className="mb-2 text-xl cursor-pointer">
+                                <div className={`flex justify-between text-green-700 transition ease-in-out duration-700 translate-y-[-50%] opacity-0 ${hover == id && "translate-y-[90%] opacity-100"}`}>
+                                    <p className="cursor-pointer"> + add product</p>
+                                    <BsFillCartDashFill color="red" className="cursor-pointer" />
+                                </div>
+                                <p className={`transition ease-in-out duration-700 ${hover == id && "opacity-0 text-green-500"}`}>{title.slice(0,title.lastIndexOf (" "))}</p>
                             </Typography>
                             <Typography color="blue-gray" className="font-medium" textGradient>
                                 {Array.from(Array(Math.floor(rating.rate)), (e, i) => {
@@ -68,3 +74,12 @@ const Shop = () => {
 }
 
 export default Shop;
+
+
+                                    // (id == hover) 
+                                    // ?
+                                    // <div className="flex justify-between">
+                                    //     <p className="cursor-pointer text-green-500">add product</p>
+                                    //     <BsFillCartDashFill color="red" className="cursor-pointer" />
+                                    // </div>
+                                    // : 
