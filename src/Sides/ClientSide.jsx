@@ -3,13 +3,13 @@ import { Route, Routes } from "react-router-dom";
 import HeaderClient from "../component/HeaderClient";
 import Home from "../Pages/Home";
 import Shop from "../Pages/Shop";
-const ClientSide = () => {
+const ClientSide = ({products,dataIsGet,addToCart,cartProduct}) => {
   return(
     <div>
-        <HeaderClient/>
+        <HeaderClient cartProduct={cartProduct}/>
         <Routes>
             <Route path="/*" element={<Home/>}/>
-            <Route path="/shop" element={<Shop/>}/>
+            <Route path="/shop" element={<Shop products={products} dataIsGet={dataIsGet} addToCart={addToCart}/>}/>
         </Routes>
     </div>
   )

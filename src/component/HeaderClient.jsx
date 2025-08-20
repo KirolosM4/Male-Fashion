@@ -10,7 +10,7 @@ import {Link} from "react-router-dom";
 import { IoBagOutline } from "react-icons/io5";
 import { TbLogout } from "react-icons/tb";
 import logo from "../../public/logo.png";
-function NavList() {
+function NavList({cartProduct}) {
     return (
         <ul className="my-5 flex flex-col lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:justify-between">
             <Typography
@@ -33,9 +33,9 @@ function NavList() {
                 color="blue-gray"
                 className="font-medium lg:flex lg:gap-7 text-center"
             >
-                <Link to="" className="block my-2 hover:text-blue-500 transition-colors">
+                <Link to="" className="block my-2 hover:text-blue-500 transition-colors relative">
+                    <span className="text-white bg-red-500 rounded-full absolute left-[50%] top-[-30%] md:right-[-30%] md:top-[-30%] px-1 w-fit">{cartProduct.length ? cartProduct.length : 0}</span>
                     <IoBagOutline className="text-xl inline" />
-
                 </Link>
                 <Link to="" className="block my-2 hover:text-blue-500 transition-colors">
                     <TbLogout className="text-xl inline" />
@@ -46,7 +46,7 @@ function NavList() {
 }
 
 
-const HeaderClient = () => {
+const HeaderClient = ({cartProduct}) => {
     const [openNav, setOpenNav] = React.useState(false);
     
     const handleWindowResize = () =>
@@ -72,7 +72,7 @@ const HeaderClient = () => {
                     <img src={logo} alt="" />
                 </Typography>
                 <div className="hidden lg:block lg:w-1/2">
-                    <NavList />
+                    <NavList cartProduct={cartProduct} />
                 </div>
                 <IconButton
                 variant="text"
@@ -88,7 +88,7 @@ const HeaderClient = () => {
                 </IconButton>
             </div>
             <Collapse open={openNav}>
-                <NavList />
+                <NavList cartProduct={cartProduct}/>
             </Collapse>
         </Navbar>
     );
