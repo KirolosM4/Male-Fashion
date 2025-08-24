@@ -16,8 +16,8 @@ const Cart = ({cartProduct}) => {
                     <div>
                         {
                             cartProduct.map(({image,title,price,count,id})=>(
-                                <div key={id} className="p-7 m-3 border-b-2 border-gray-500 flex flex-col gap-7">
-                                    <div className="flex justify-between items-center">
+                                <div key={id} className="md:p-7  px-1 py-7 m-3 border-b-2 border-gray-500 flex flex-col gap-7">
+                                    <div className="flex text-center items-center md:justify-between ">
                                         <img src={image} alt="" className="w-[15%]" />
                                             <p className="text-sm md:text-xl">{title}</p>
                                         <p>{price}</p>
