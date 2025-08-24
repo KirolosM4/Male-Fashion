@@ -23,7 +23,7 @@ function NavList({cartProduct}) {
                     Home
                 </Link>
 
-                <Link to="shop" className="block my-2 hover:text-blue-500 transition-colors">
+                <Link to="/shop" className="block my-2 hover:text-blue-500 transition-colors">
                     Shop
                 </Link>
             </Typography>
@@ -33,8 +33,8 @@ function NavList({cartProduct}) {
                 color="blue-gray"
                 className="font-medium lg:flex lg:gap-7 text-center"
             >
-                <Link to="" className="block my-2 hover:text-blue-500 transition-colors relative">
-                    <span className="text-white bg-red-500 rounded-full absolute left-[50%] top-[-30%] md:right-[-30%] md:top-[-30%] px-1 w-fit">{cartProduct.length ? cartProduct.length : 0}</span>
+                <Link to="/cart" className="block my-2 hover:text-blue-500 transition-colors relative">
+                    <span className={`text-white ${cartProduct.length > 0 ? "bg-green-500" : "bg-red-500"} rounded-full absolute left-[50%] top-[-30%] md:right-[-30%] md:top-[-30%] px-1 w-fit`}>{cartProduct.length ? cartProduct.length : 0}</span>
                     <IoBagOutline className="text-xl inline" />
                 </Link>
                 <Link to="" className="block my-2 hover:text-blue-500 transition-colors">
