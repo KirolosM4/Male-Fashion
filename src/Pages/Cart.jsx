@@ -6,7 +6,7 @@ import { CiCreditCard1 } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { FaTrashCan } from "react-icons/fa6";
 
-const Cart = ({cartProduct}) => {
+const Cart = ({cartProduct,increseProduct,decreseProduct,deleteItem}) => {
     return(
         <div className="flex flex-col items-center  md:flex-row ">
             <div className="w-screen flex flex-col items-center md:w-[70%] ">
@@ -23,11 +23,11 @@ const Cart = ({cartProduct}) => {
                                         <p>{price}</p>
                                     </div>
                                     <div className="flex justify-between items-center">
-                                        <Button color="red">Decrese</Button>
+                                        <Button color="red" disabled={count < 2} onClick={()=>decreseProduct(id)}>Decrese</Button>
                                         <p>{count}</p>
-                                        <Button color="green">Increse</Button>
-                                        <p>{price*count}</p>
-                                        <FaTrashCan />
+                                        <Button color="green" onClick={()=>increseProduct(id)}>Increse</Button>
+                                        <p>{(price*count).toFixed(2)}</p>
+                                        <FaTrashCan className="cursor-pointer" onClick={()=>deleteItem(id)}/>
                                     </div>
                                 </div>
                             ))
@@ -46,8 +46,8 @@ const Cart = ({cartProduct}) => {
             <div className="w-[70%] my-7 md:w-[30%]">
                 <div className="w-full h-[25%] bg-gray-300 p-5 flex flex-col justify-between text-2xl static md:fixed md:top-[20%] md:w-[20%] lg:h-[20%]">
                     <p>CART TOTAL</p>
-                    <p className="flex items-center justify-between">$0 <CiCreditCard1 /></p>
-                    <Button disabled={true}>Check Out</Button>
+                    <p className="flex items-center justify-between">0$<CiCreditCard1 /></p>
+                    <Button disabled={cartProduct.length < 1}>Check Out</Button>
                 </div>
             </div>
         </div>

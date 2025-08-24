@@ -5,14 +5,14 @@ import Home from "../Pages/Home";
 import Shop from "../Pages/Shop";
 import Cart from "../Pages/Cart";
 
-const ClientSide = ({products,dataIsGet,addToCart,cartProduct}) => {
+const ClientSide = ({products,dataIsGet,addToCart,cartProduct,increseProduct,decreseProduct,deleteItem}) => {
   return(
     <div>
         <HeaderClient cartProduct={cartProduct}/>
         <Routes>
-            <Route path="/*" element={<Home/>}/>
-            <Route path="/shop" element={<Shop products={products} dataIsGet={dataIsGet} addToCart={addToCart}/>}/>
-            <Route path="/cart" element={<Cart cartProduct={cartProduct}/>}/>
+            <Route path="/*" element={<Home />}/>
+            <Route path="/shop" element={<Shop products={products} dataIsGet={dataIsGet} addToCart={addToCart} deleteItem={deleteItem}/>}/>
+            <Route path="/cart" element={<Cart cartProduct={cartProduct} increseProduct={increseProduct} decreseProduct={decreseProduct} deleteItem={deleteItem}/>}/>
         </Routes>
     </div>
   )
