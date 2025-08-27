@@ -37,7 +37,7 @@ function NavList({cartProduct}) {
                     <span className={`text-white ${cartProduct.length > 0 ? "bg-green-500" : "bg-red-500"} rounded-full absolute left-[50%] top-[-30%] md:right-[-30%] md:top-[-30%] px-1 w-fit`}>{cartProduct.length ? cartProduct.length : 0}</span>
                     <IoBagOutline className="text-xl inline" />
                 </Link>
-                <Link to="" className="block my-2 hover:text-blue-500 transition-colors">
+                <Link to="/signin" className="block my-2 hover:text-blue-500 transition-colors">
                     <TbLogout className="text-xl inline" />
                 </Link>
             </Typography>

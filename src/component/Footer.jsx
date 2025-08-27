@@ -10,7 +10,7 @@ import { MdOutlineMail } from "react-icons/md";
 
 const Footer = () => {
     return(
-        <div className="bg-black text-white mt-5 h-fit flex items-center py-3 text-center md:text-left md:h-[50vh]">
+        <div className="bg-black text-white h-fit flex items-center py-3 text-center md:text-left md:h-[50vh]">
             <div className="container mx-auto flex flex-col gap-7 md:grid md:grid-cols-4 ">
                 <div className="flex flex-col gap-7 items-center md:items-start">
                     <img src={footer_logo} alt="" className="w-[70%]" />
