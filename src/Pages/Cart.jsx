@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import cartImg from "../../public/empty-shopping.jpg"
 import { Button } from "@material-tailwind/react"
 import { BsCart4 } from "react-icons/bs";
@@ -7,9 +7,20 @@ import { Link } from "react-router-dom";
 import { FaTrashCan } from "react-icons/fa6";
 
 const Cart = ({cartProduct,increseProduct,decreseProduct,deleteItem}) => {
+    const getCartTotal = () => {
+        const totalPrice = cartProduct.reduce((totalP,product)=>{
+            return totalP + (product.price * product.count)
+        },0)
+        return totalPrice.toFixed(2);
+    }
+    
+    useEffect(()=>{
+        getCartTotal();
+        console.log(getCartTotal())
+    },[cartProduct])
     return(
-        <div className="flex flex-col items-center  md:flex-row ">
-            <div className="w-screen flex flex-col items-center md:w-[70%] ">
+        <div className="flex flex-col items-center  md:flex-row mb-7">
+            <div className="w-screen flex flex-col items-center md:w-[70%]">
                 {
                     cartProduct.length > 0
                     ?
@@ -46,7 +57,7 @@ const Cart = ({cartProduct,increseProduct,decreseProduct,deleteItem}) => {
             <div className="w-[70%] my-7 md:w-[30%]">
                 <div className="w-full h-[25%] bg-gray-300 p-5 flex flex-col justify-between text-2xl static md:fixed md:top-[20%] md:w-[20%] lg:h-[20%]">
                     <p>CART TOTAL</p>
-                    <p className="flex items-center justify-between">0$<CiCreditCard1 /></p>
+                    <p className="flex items-center justify-between">{getCartTotal() ? getCartTotal() : "$ 0"}<CiCreditCard1 /></p>
                     <Button disabled={cartProduct.length < 1}>Check Out</Button>
                 </div>
             </div>
