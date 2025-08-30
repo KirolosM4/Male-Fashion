@@ -8,7 +8,9 @@ const App = () => {
     const [products,setProducts] = useState([]);
     const [dataIsGet,setDataIsGet] = useState(false);
     const [cartProduct,setCartProduct] = useState([]);
+    const [users,setUsers] = useState([]);
 
+// start functions product 
     // get all product 
     const getAllProducts = () => {
         axios({
@@ -74,15 +76,27 @@ const App = () => {
 
         return test;
     }
+// end functions product 
+// start functions users 
+    const getAllUsers = () => {
+      axios({
+          method:"get",
+          url:"https://68a39589c123272fb9affd0c.mockapi.io/shop/users",
+        }).then((res)=>{
+          setUsers(res.data);
+        })
+    }
 
+// end functions users 
     useEffect(()=>{
         getAllProducts()
+        getAllUsers()
     },[])
 
   return(
     <div>
       <Routes>
-          <Route path="/*" element={<ClientSide products={products} dataIsGet={dataIsGet} addToCart={addToCart} cartProduct={cartProduct} increseProduct={increseProduct} decreseProduct={decreseProduct} deleteItem={deleteItem}/>}/>
+          <Route path="/*" element={<ClientSide products={products} dataIsGet={dataIsGet} addToCart={addToCart} cartProduct={cartProduct} increseProduct={increseProduct} decreseProduct={decreseProduct} deleteItem={deleteItem} users={users}/>}/>
           <Route path="/admin" element={<AdminSide/>}/>
       </Routes>
       <Footer/>
