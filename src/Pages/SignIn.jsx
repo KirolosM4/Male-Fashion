@@ -7,7 +7,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 
-const SignIn = ({users}) => {
+const SignIn = ({users,setLogged,setLoggUser}) => {
     const [email,setEmail] = useState("");
     const [stateEmail,setStateEmail] = useState(false);
     const [password,setPassword] = useState("");
@@ -40,6 +40,8 @@ const SignIn = ({users}) => {
             icon: "success",
             draggable: true
             });
+            setLogged(true);
+            setLoggUser(testDataUser)
             navigate("/home");
         } else {
             Swal.fire({

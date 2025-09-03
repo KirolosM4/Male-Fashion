@@ -22,7 +22,7 @@ const Home = () => {
                     <p className="text-3xl md:text-5xl text-[#475569] py-1">Fall - Winter</p>
                     <p className="text-3xl md:text-5xl  text-[#475569] py-1">Collections 2023</p>
                     <p className="text-[#475569] py-3">A specialist label creating luxury essentials. Ethically crafted with an unwavering commitment to execeptional quality</p>
-                    <span className="bg-red-500 p-3 text-white"><Link to="/shop"k>Shop Now</Link><FaArrowRightLong className="inline" /> </span>
+                    <span className="bg-red-500 p-3 text-white"><Link to="/shop">Shop Now</Link><FaArrowRightLong className="inline" /> </span>
                 </div>
             </div>
         </div>

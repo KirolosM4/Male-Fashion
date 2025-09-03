@@ -9,7 +9,8 @@ const App = () => {
     const [dataIsGet,setDataIsGet] = useState(false);
     const [cartProduct,setCartProduct] = useState([]);
     const [users,setUsers] = useState([]);
-
+    const [logged,setLogged] = useState(false);
+    const [loggUser,setLoggUser] = useState({});
 // start functions product 
     // get all product 
     const getAllProducts = () => {
@@ -96,7 +97,7 @@ const App = () => {
   return(
     <div>
       <Routes>
-          <Route path="/*" element={<ClientSide products={products} dataIsGet={dataIsGet} addToCart={addToCart} cartProduct={cartProduct} increseProduct={increseProduct} decreseProduct={decreseProduct} deleteItem={deleteItem} users={users}/>}/>
+          <Route path="/*" element={<ClientSide products={products} dataIsGet={dataIsGet} addToCart={addToCart} cartProduct={cartProduct} increseProduct={increseProduct} decreseProduct={decreseProduct} deleteItem={deleteItem} users={users} logged={logged} setLogged={setLogged} loggUser={loggUser} setLoggUser={setLoggUser}/>}/>
           <Route path="/admin" element={<AdminSide/>}/>
       </Routes>
       <Footer/>
