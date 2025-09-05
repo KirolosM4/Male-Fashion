@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Card,
   Input,
@@ -6,15 +6,26 @@ import {
 } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
+import PageNotFound from "./PageNotFound";
+import Store from "../Context/Store";
 
-const SignIn = ({users,setLogged,setLoggUser}) => {
+const SignIn = () => {
+    // start state 
     const [email,setEmail] = useState("");
     const [stateEmail,setStateEmail] = useState(false);
     const [password,setPassword] = useState("");
     const [statePassword,setStatePassword] = useState(false);
     const [load,setLoad] = useState(false);
+    // end state 
+    // start var 
     const navigate = useNavigate();
-
+    // end var 
+    // start context store 
+    const {users} = useContext(Store);
+    const {setLogged} = useContext(Store);
+    const {setLoggUser} = useContext(Store);
+    const {errDataUser} = useContext(Store);
+    // end context store 
     const handlForm = (e) => {
         e.preventDefault();
         if(!email.includes("@") || email == " ") {
@@ -54,6 +65,8 @@ const SignIn = ({users,setLogged,setLoggUser}) => {
         },3000)
     }
     return(
+        !errDataUser
+        ?
         <div className="h-[70vh] flex justify-center items-center">
             <Card color="transparent" className="p-7 shadow-2xl" shadow={false}>
                 <p className="text-center text-3xl font-bold">Sign In</p>
@@ -73,6 +86,8 @@ const SignIn = ({users,setLogged,setLoggUser}) => {
                 </form>
             </Card>
         </div>
+        :
+        <PageNotFound/>
     )
 }
 

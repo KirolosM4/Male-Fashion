@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { use, useContext, useState } from "react";
 import {
   Card,
   Input,
@@ -9,7 +9,10 @@ import {
 import Swal from 'sweetalert2'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-const CreateNewAccount = ({users}) => {
+import PageNotFound from "./PageNotFound";
+import Store from "../Context/Store";
+const CreateNewAccount = () => {
+    // start state 
     const [firstName,setFirstName] = useState("");
     const [stateFirstName,setStateFirstName] = useState(false);
     const [lastName,setLastName] = useState("");
@@ -26,9 +29,15 @@ const CreateNewAccount = ({users}) => {
     const [phoneNumber,setPhoneNumber] = useState("");
     const [statePhoneNumber,setStatePhoneNumber] = useState(false);
     const [loading,setLoading] = useState(false);
+    // end state 
+    // start var 
     const navigate = useNavigate();
     const reg = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-
+    // end var 
+    // start context store 
+    const {users} = useContext(Store);
+    const {getAllUsers} = useContext(Store);
+    // end context store 
     const handlForm = (e) => {
         e.preventDefault();
         if(firstName == ""){
@@ -72,6 +81,8 @@ const CreateNewAccount = ({users}) => {
                     method:"post",
                     url:"https://68a39589c123272fb9affd0c.mockapi.io/shop/users",
                     data:data
+                }).then(()=>{
+                    getAllUsers();
                 })
                 Swal.fire({
                 title: "Done",
@@ -90,6 +101,8 @@ const CreateNewAccount = ({users}) => {
         },3000)
     }
     return(
+        users.length
+        ?
         <div className="flex justify-center items-center my-7">
             <Card color="transparent" className="p-7 shadow-2xl h-[80%] w-full text-center items-center md:w-[50%]" shadow={false}>
                 <p className="text-center text-3xl font-bold">Create New Account</p>
@@ -117,6 +130,8 @@ const CreateNewAccount = ({users}) => {
                 </form>
             </Card>
         </div>
+        :
+        <PageNotFound/>
     )
 }
 

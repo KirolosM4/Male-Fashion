@@ -1,18 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Card,
   CardHeader,
   CardBody,
   CardFooter,
   Typography,
-  Tooltip,
 } from "@material-tailwind/react";
-import axios from "axios"
 import { FaStar } from "react-icons/fa6";
 import { BsFillCartDashFill } from "react-icons/bs";
-
-const Shop = ({products,dataIsGet,addToCart,deleteItem}) => {
+import PageNotFound from "./PageNotFound";
+import Store from "../Context/Store";
+const Shop = () => {
+    // start state 
     const [hover,setHover] = useState("");
+    // end state 
+    // start context store 
+    const {products} = useContext(Store);
+    const {dataIsGet} = useContext(Store);
+    const {addToCart} = useContext(Store);
+    const {deleteItem} = useContext(Store);
+    const {errDataPro} = useContext(Store);
+    // end context store 
     return(
         <div className={`container mx-auto g my-7 grid  ${dataIsGet ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4" : "h-screen grid-cols-1 justify-items-center items-center w-screen"}`}>
             {
@@ -49,20 +57,11 @@ const Shop = ({products,dataIsGet,addToCart,deleteItem}) => {
                     </Card>
                 ))
                 :
-                <div className="loader"></div>
-
+                errDataPro ? <PageNotFound/> : <div className="loader"></div>
+                
             }
         </div>
     )
 }
 
 export default Shop;
-
-
-                                    // (id == hover) 
-                                    // ?
-                                    // <div className="flex justify-between">
-                                    //     <p className="cursor-pointer text-green-500">add product</p>
-                                    //     <BsFillCartDashFill color="red" className="cursor-pointer" />
-                                    // </div>
-                                    // : 

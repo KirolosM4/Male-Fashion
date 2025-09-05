@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
     Navbar,
     Collapse,
@@ -17,8 +17,17 @@ import { IoBagOutline } from "react-icons/io5";
 import { TbLogout } from "react-icons/tb";
 import logo from "../../public/logo.png";
 import Swal from "sweetalert2";
-function NavList({cartProduct,logged,loggUser,setLogged}) {
+import Store from "../Context/Store";
+function NavList() {
+    // start var 
     const navigate = useNavigate();
+    // end var 
+    // start context 
+    const {cartProduct} = useContext(Store);
+    const {logged} = useContext(Store);
+    const {loggUser} = useContext(Store);
+    const {setLogged} = useContext(Store);
+    // end context 
     return (
         <ul className="my-5 flex flex-col lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:justify-between">
             <Typography
@@ -133,7 +142,7 @@ function NavList({cartProduct,logged,loggUser,setLogged}) {
 }
 
 
-const HeaderClient = ({cartProduct,logged,loggUser,setLogged}) => {
+const HeaderClient = () => {
     const [openNav, setOpenNav] = React.useState(false);
     
     const handleWindowResize = () =>
@@ -159,7 +168,7 @@ const HeaderClient = ({cartProduct,logged,loggUser,setLogged}) => {
                     <img src={logo} alt="" />
                 </Typography>
                 <div className="hidden lg:block lg:w-1/2">
-                    <NavList cartProduct={cartProduct} logged={logged} setLogged={setLogged} loggUser={loggUser} />
+                    <NavList />
                 </div>
                 <IconButton
                 variant="text"
@@ -175,7 +184,7 @@ const HeaderClient = ({cartProduct,logged,loggUser,setLogged}) => {
                 </IconButton>
             </div>
             <Collapse open={openNav}>
-                <NavList cartProduct={cartProduct} logged={logged} setLogged={setLogged} loggUser={loggUser}/>
+                <NavList />
             </Collapse>
         </Navbar>
     );

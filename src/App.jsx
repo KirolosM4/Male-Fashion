@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import ClientSide from "./Sides/ClientSide";
 import AdminSide from "./Sides/AdminSide";
 import Footer from "./component/Footer";
 import axios from "axios";
+import Store from "./Context/Store";
 const App = () => {
     const [products,setProducts] = useState([]);
     const [dataIsGet,setDataIsGet] = useState(false);
@@ -11,6 +12,9 @@ const App = () => {
     const [users,setUsers] = useState([]);
     const [logged,setLogged] = useState(false);
     const [loggUser,setLoggUser] = useState({});
+    const [errDataUser,setErrDataUser] = useState(false);
+    const [errDataPro,setErrDataPro] = useState(false);
+
 // start functions product 
     // get all product 
     const getAllProducts = () => {
@@ -20,8 +24,10 @@ const App = () => {
         }).then((res)=>{
             setProducts(res.data);
             setDataIsGet(true);
+            setErrDataPro(false);
+        }).catch(()=>{
+          setErrDataPro(true);
         })
-
     }
 
     // add product to cart 
@@ -77,6 +83,15 @@ const App = () => {
 
         return test;
     }
+    // start get cart total 
+    const getCartTotal = () => {
+        const totalPrice = cartProduct.reduce((totalP,product)=>{
+            return totalP + (product.price * product.count)
+        },0)
+        return parseFloat(totalPrice.toFixed(2));
+    }
+
+// end get cart total 
 // end functions product 
 // start functions users 
     const getAllUsers = () => {
@@ -85,23 +100,31 @@ const App = () => {
           url:"https://68a39589c123272fb9affd0c.mockapi.io/shop/users",
         }).then((res)=>{
           setUsers(res.data);
+          setErrDataUser(false);
+        }).catch(()=>{
+          setErrDataUser(true);
         })
     }
 
 // end functions users 
+
     useEffect(()=>{
         getAllProducts()
         getAllUsers()
     },[])
+    
+    useEffect(()=>{
+        getCartTotal();
+    },[cartProduct])
 
   return(
-    <div>
+    <Store.Provider value={{products,dataIsGet,cartProduct,users,logged,loggUser,errDataUser,errDataPro,setProducts,setDataIsGet,setCartProduct,setUsers,setLogged,setLoggUser,getCartTotal,getAllProducts,addToCart,increseProduct,decreseProduct,deleteItem,getAllUsers,setErrDataUser,setErrDataPro}}>
       <Routes>
-          <Route path="/*" element={<ClientSide products={products} dataIsGet={dataIsGet} addToCart={addToCart} cartProduct={cartProduct} increseProduct={increseProduct} decreseProduct={decreseProduct} deleteItem={deleteItem} users={users} logged={logged} setLogged={setLogged} loggUser={loggUser} setLoggUser={setLoggUser}/>}/>
+          <Route path="/*" element={<ClientSide />}/>
           <Route path="/admin" element={<AdminSide/>}/>
       </Routes>
       <Footer/>
-    </div>
+    </Store.Provider> 
   )
 }
 

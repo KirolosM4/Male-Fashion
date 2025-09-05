@@ -6,17 +6,21 @@ import Shop from "../Pages/Shop";
 import Cart from "../Pages/Cart";
 import SignIn from "../Pages/SignIn";
 import CreateNewAccount from "../Pages/CreateAccount";
+import PageNotFound from "../Pages/PageNotFound";
+import CheckOut from "../Pages/CheckOut";
 
-const ClientSide = ({products,dataIsGet,addToCart,cartProduct,increseProduct,decreseProduct,deleteItem,users,logged,setLogged,loggUser,setLoggUser}) => {
+const ClientSide = () => {
   return(
     <div>
-        <HeaderClient cartProduct={cartProduct} logged={logged} setLogged={setLogged} loggUser={loggUser}/>
+        <HeaderClient/>
         <Routes>
             <Route path="/*" element={<Home />}/>
-            <Route path="/shop" element={<Shop products={products} dataIsGet={dataIsGet} addToCart={addToCart} deleteItem={deleteItem}/>}/>
-            <Route path="/cart" element={<Cart cartProduct={cartProduct} increseProduct={increseProduct} decreseProduct={decreseProduct} deleteItem={deleteItem}/>}/>
-            <Route path="/signin" element={<SignIn users={users} setLogged = {setLogged} setLoggUser={setLoggUser}/>}/>
-            <Route path="/createnewaccount" element={<CreateNewAccount users={users}/>}/>
+            <Route path="/shop" element={<Shop/> }/>
+            <Route path="/cart" element={<Cart />}/>
+            <Route path="/signin" element={<SignIn />}/>
+            <Route path="/createnewaccount" element={<CreateNewAccount />}/>
+            <Route path="/checkout" element={<CheckOut />}/>
+            <Route path="/pagenotfound" element={<PageNotFound/>}/>
         </Routes>
     </div>
   )
