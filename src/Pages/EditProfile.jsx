@@ -81,7 +81,7 @@ const EditProfile = () => {
     return(
         <div className="container mx-auto">
             <div className="flex items-center justify-center py-7 gap-5 border-b-2 border-gray-500 md:justify-start">
-                <img src={loggUser.image} alt="" className="w-[25%] rounded-full md:w-[5%]" />
+                <img src={loggUser.image} alt="" className="w-[20%] rounded-full md:w-[5%]" />
                 <p className="text-sm md:text-2xl">My Profile Ready To Changed ...</p>
             </div>
             <Card color="transparent" shadow={false} className="p-7">
