@@ -8,6 +8,7 @@ import SignIn from "../Pages/SignIn";
 import CreateNewAccount from "../Pages/CreateAccount";
 import PageNotFound from "../Pages/PageNotFound";
 import CheckOut from "../Pages/CheckOut";
+import Profile from "../Pages/Profile";
 
 const ClientSide = () => {
   return(
@@ -20,6 +21,7 @@ const ClientSide = () => {
             <Route path="/signin" element={<SignIn />}/>
             <Route path="/createnewaccount" element={<CreateNewAccount />}/>
             <Route path="/checkout" element={<CheckOut />}/>
+            <Route path="/profile" element={<Profile />}/>
             <Route path="/pagenotfound" element={<PageNotFound/>}/>
         </Routes>
     </div>

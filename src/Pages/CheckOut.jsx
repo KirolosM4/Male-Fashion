@@ -24,7 +24,7 @@ const CheckOut = () => {
                         <Input label="Card Number" readOnly="true" value="**** **** **** **** ****" />
                         <Input label="Expiry Date" readOnly="true" value="****" />
                     </div>
-                    <Button className="mt-6 w-fit self-center">
+                    <Button className="mt-6 w-fit self-center" disabled="true">
                         Proceed To Pay
                     </Button>
                 </form>
@@ -42,17 +42,3 @@ const CheckOut = () => {
 }
 
 export default CheckOut;
-
-
-
-        // <div className="container mx-auto flex flex-col items-center  md:flex-row mb-7">
-        //     <div className="w-screen flex flex-col items-center md:w-[70%]">
-            
-        //     </div>
-        //     <div className="w-[70%] my-7 md:w-[30%]">
-        //         <div className="w-full h-[25%] bg-gray-300 p-5 flex flex-col justify-between text-2xl static md:fixed md:top-[20%] md:w-[20%] lg:h-[20%]">
-        //             <p>CART TOTAL</p>
-        //             <p className="flex items-center justify-between">{getCartTotal() ? getCartTotal() : "$ 0"}<CiCreditCard1 /></p>
-        //         </div>
-        //     </div>
-        // </div>

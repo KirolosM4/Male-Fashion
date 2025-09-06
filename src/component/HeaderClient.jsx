@@ -9,7 +9,6 @@ import {
     MenuList,
     MenuItem,
     Avatar,
-    Badge
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import {Link, useNavigate} from "react-router-dom";
@@ -84,7 +83,7 @@ function NavList() {
                                 </svg>
                         
                                 <Typography variant="small" className="font-medium">
-                                    My Profile
+                                    <Link to="/profile">My Profile</Link>
                                 </Typography>
                             </MenuItem>
                             {
