@@ -23,7 +23,7 @@ const ClientSide = () => {
             <Route path="/createnewaccount" element={<CreateNewAccount />}/>
             <Route path="/checkout" element={<CheckOut />}/>
             <Route path="/profile" element={<Profile />}/>
-            <Route path="/editprofile/:userid" element={<EditProfile />}/>
+            <Route path="/profile/editprofile" element={<EditProfile />}/>
             <Route path="/pagenotfound" element={<PageNotFound/>}/>
         </Routes>
     </div>
