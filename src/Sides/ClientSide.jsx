@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Route, Routes } from "react-router-dom";
 import HeaderClient from "../component/HeaderClient";
 import Home from "../Pages/Home";
@@ -10,8 +10,10 @@ import PageNotFound from "../Pages/PageNotFound";
 import CheckOut from "../Pages/CheckOut";
 import Profile from "../Pages/Profile";
 import EditProfile from "../Pages/EditProfile";
+import Store from "../Context/Store";
 
 const ClientSide = () => {
+  const {logged} = useContext(Store)
   return(
     <div>
         <HeaderClient/>
@@ -22,8 +24,8 @@ const ClientSide = () => {
             <Route path="/signin" element={<SignIn />}/>
             <Route path="/createnewaccount" element={<CreateNewAccount />}/>
             <Route path="/checkout" element={<CheckOut />}/>
-            <Route path="/profile" element={<Profile />}/>
-            <Route path="/profile/editprofile" element={<EditProfile />}/>
+            <Route path="/profile" element={logged ? <Profile /> : <Home/>}/>
+            <Route path="/profile/editprofile" element={logged ? <EditProfile /> : <Home/>}/>
             <Route path="/pagenotfound" element={<PageNotFound/>}/>
         </Routes>
     </div>
