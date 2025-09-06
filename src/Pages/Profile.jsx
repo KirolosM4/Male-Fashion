@@ -1,17 +1,24 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Store from "../Context/Store";
 import {
   Card,
   Input,
   Button,
 } from "@material-tailwind/react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 const Profile = () => {
     // start context store 
     const {loggUser} = useContext(Store)
-
-
     // end context store 
+    // start var 
+    const navigate = useNavigate();
+
+    // end var 
+    useEffect(()=>{
+        if(!loggUser){
+            navigate("/")
+        }
+    },[])
     return(
         <div className="container mx-auto flex flex-col gap-2">
             <p className="p-7 text-2xl font-bold border-b-2 border-gray-500 text-center md:text-left">My Profile</p>

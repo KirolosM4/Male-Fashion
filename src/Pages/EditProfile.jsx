@@ -78,6 +78,12 @@ const EditProfile = () => {
             navigate("/profile");
         },3000)
     }
+
+    useEffect(()=>{
+        if(!loggUser){
+            navigate("/")
+        }
+    },[])
     return(
         <div className="container mx-auto">
             <div className="flex items-center justify-center py-7 gap-5 border-b-2 border-gray-500 md:justify-start">
