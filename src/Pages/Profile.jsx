@@ -5,6 +5,7 @@ import {
   Input,
   Button,
 } from "@material-tailwind/react";
+import {Link} from "react-router-dom";
 const Profile = () => {
     // start context store 
     const {loggUser} = useContext(Store)
@@ -15,7 +16,7 @@ const Profile = () => {
         <div className="container mx-auto flex flex-col gap-2">
             <p className="p-7 text-2xl font-bold border-b-2 border-gray-500 text-center md:text-left">My Profile</p>
             <div className="h-[50vh] md:h-[80vh] w-full flex justify-center items-center">
-                <img src={loggUser.image} className="h-[80%] md:h-1/2 md:h-full rounded-full py-5" alt="" />
+                <img src={loggUser.image} className="w-[35%] h-[80%] md:w-[45%] md:h-full md:h-full rounded-full py-5" alt="" />
             </div>
             <div className="py-5 border-b-2 border-gray-500 flex flex-col gap-2 text-center md:text-left">
                 <p className="text-green-500 font-bold">{loggUser.firstName}</p>
@@ -42,7 +43,9 @@ const Profile = () => {
                             <Input label="UserName" disabled="true" value={loggUser.userName}/>
                             <p className="text-xs md:text-sm opacity-50 py-2">The username is used for the login process and you can never change it.</p>
                         </div>
-                    <Button color="green" variant="outlined" className="w-fit">Edit Profile</Button>
+                    <Button color="green" variant="outlined" className="w-fit">
+                        <Link to={`/editprofile/${loggUser.id}`}>Edit Profile</Link>
+                    </Button>
                 </form>
             </Card>
         </div>
