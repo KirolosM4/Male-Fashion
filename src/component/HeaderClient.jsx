@@ -105,7 +105,7 @@ function NavList() {
                                         />
                                     </svg>
                                     <Typography variant="small" className="font-medium">
-                                        Control
+                                        <Link to="/admin">Control</Link>
                                     </Typography>
                                 </MenuItem>
                             }

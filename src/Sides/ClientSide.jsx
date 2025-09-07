@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext } from "react"
 import { Route, Routes } from "react-router-dom";
 import HeaderClient from "../component/HeaderClient";
 import Home from "../Pages/Home";
@@ -11,9 +11,11 @@ import CheckOut from "../Pages/CheckOut";
 import Profile from "../Pages/Profile";
 import EditProfile from "../Pages/EditProfile";
 import Store from "../Context/Store";
+import AdminSide from "./AdminSide";
 
 const ClientSide = () => {
   const {logged} = useContext(Store);
+  const {loggUser} = useContext(Store);
   return(
     <div>
         <HeaderClient/>
@@ -27,6 +29,7 @@ const ClientSide = () => {
             <Route path="/profile" element={logged ? <Profile /> : <Home />}/>
             <Route path="/profile/editprofile" element={logged ? <EditProfile /> : <Home/>}/>
             <Route path="/pagenotfound" element={<PageNotFound/>}/>
+            <Route path="/admin" element={loggUser.role == "admin" ? <AdminSide/> : <Home/>}/>
         </Routes>
     </div>
   )

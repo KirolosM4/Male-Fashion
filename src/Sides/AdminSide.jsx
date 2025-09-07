@@ -1,11 +1,15 @@
 import React from "react"
 import { Route, Routes } from "react-router-dom";
-import HeaderClient from "../component/HeaderClient";
+import HeaderAdmin from "../component/HeaderAdmin";
+import DashBoard from "../Pages/DashBoard";
 const AdminSide = () => {
   return(
-    <div>
-        
-    </div>
+      <div>
+          <HeaderAdmin/>
+          <Routes>
+            <Route path="/" element={<DashBoard/>}/>
+          </Routes>
+      </div>
   )
 }
 
