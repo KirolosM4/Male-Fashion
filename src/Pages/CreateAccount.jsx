@@ -79,7 +79,7 @@ const CreateNewAccount = () => {
             if(!testFindUser){
                 axios({
                     method:"post",
-                    url:"https://68a39589c123272fb9affd0c.mockapi.io/shop/users",
+                    url:`${import.meta.env.VITE_API_USERS}`,
                     data:data
                 }).then(()=>{
                     getAllUsers();

@@ -20,7 +20,7 @@ const App = () => {
     const getAllProducts = () => {
         axios({
             method : "get",
-            url : "https://68a39589c123272fb9affd0c.mockapi.io/shop/products",
+            url : `${import.meta.env.VITE_API_PRO}`,
         }).then((res)=>{
             setProducts(res.data);
             setDataIsGet(true);
@@ -97,7 +97,7 @@ const App = () => {
     const getAllUsers = () => {
       axios({
           method:"get",
-          url:"https://68a39589c123272fb9affd0c.mockapi.io/shop/users",
+          url:`${import.meta.env.VITE_API_USERS}`,
         }).then((res)=>{
           setUsers(res.data);
           setErrDataUser(false);

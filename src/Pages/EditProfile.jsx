@@ -58,7 +58,7 @@ const EditProfile = () => {
             setLoading(false);
             axios({
                 method:"put",
-                url:`https://68a39589c123272fb9affd0c.mockapi.io/shop/users/${loggUser.id}`,
+                url:`${import.meta.env.VITE_API_USERS}/${loggUser.id}`,
                 data:data
             }).then((e)=>{
                 setLoggUser(e.data);
@@ -79,11 +79,6 @@ const EditProfile = () => {
         },3000)
     }
 
-    useEffect(()=>{
-        if(!loggUser){
-            navigate("/")
-        }
-    },[])
     return(
         <div className="container mx-auto">
             <div className="flex items-center justify-center py-7 gap-5 border-b-2 border-gray-500 md:justify-start">
