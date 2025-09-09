@@ -3,6 +3,7 @@ import BoardAdmin from "../component/BoardAdmin";
 import { Button, Card, Typography } from "@material-tailwind/react";
 import Store from "../Context/Store";
 import axios from "axios";
+import { Link } from "react-router-dom";
 const AllUsers = () => {
     const TABLE_HEAD = ["User", "Role", "Operation"];
     const {users} = useContext(Store);
@@ -22,7 +23,9 @@ const AllUsers = () => {
             <BoardAdmin/>
             <div className="col-start-4 col-span-7 row-start-0 row-span-3 flex flex-col gap-3 py-4 items-center text-[#475569] font-bold">
                 <p className="text-3xl">Users</p>
-                <Button color="green" className="w-fit">Add New User</Button>
+                <Button color="green" className="w-fit">
+                    <Link to="/admin/users/addnewuser">Add New User</Link>
+                </Button>
             </div>
              <Card className="col-start-4 col-span-8 row-start-4 row-span-8 overflow-y-scroll bg-[#475569] text-white">
                 <table className="w-full min-w-max table-auto text-center">
