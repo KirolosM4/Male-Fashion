@@ -5,6 +5,7 @@ import AdminSide from "./Sides/AdminSide";
 import Footer from "./component/Footer";
 import axios from "axios";
 import Store from "./Context/Store";
+import Home from "./Pages/Home";
 const App = () => {
     const [products,setProducts] = useState([]);
     const [dataIsGet,setDataIsGet] = useState(false);
@@ -121,7 +122,7 @@ const App = () => {
     <Store.Provider value={{products,dataIsGet,cartProduct,users,logged,loggUser,errDataUser,errDataPro,setProducts,setDataIsGet,setCartProduct,setUsers,setLogged,setLoggUser,getCartTotal,getAllProducts,addToCart,increseProduct,decreseProduct,deleteItem,getAllUsers,setErrDataUser,setErrDataPro}}>
       <Routes>
           <Route path="/*" element={<ClientSide />}/>
-          <Route path="/admin" element={<AdminSide/>}/>
+          <Route path="/admin/*" element={loggUser.role == "admin" ? <AdminSide/> : <ClientSide/>}/>
       </Routes>
       <Footer/>
     </Store.Provider> 
