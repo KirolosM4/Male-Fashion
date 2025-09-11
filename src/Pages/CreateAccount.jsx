@@ -83,12 +83,19 @@ const CreateNewAccount = () => {
                     data:data
                 }).then(()=>{
                     getAllUsers();
+                    Swal.fire({
+                        title: "Done",
+                        icon: "success",
+                        draggable: true
+                    });
+                }).catch(()=>{
+                    Swal.fire({
+                        title: "something error",
+                        icon: "error",
+                        draggable: true
+                    });
                 })
-                Swal.fire({
-                title: "Done",
-                icon: "success",
-                draggable: true
-                });
+
             } else {
                 Swal.fire({
                 title: "this email is exist",

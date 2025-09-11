@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext} from "react"
 import cartImg from "../../public/empty-shopping.jpg"
 import { Button } from "@material-tailwind/react"
 import { BsCart4 } from "react-icons/bs";
@@ -21,7 +21,7 @@ const Cart = () => {
     // end context store 
     return(
         <div className="flex flex-col items-center  md:flex-row mb-7">
-            <div className="w-screen flex flex-col items-center md:w-[70%]">
+            <div className="w-screen flex flex-col items-center md:w-[60%]">
                 {
                     cartProduct.length > 0
                     ?
@@ -30,7 +30,7 @@ const Cart = () => {
                             cartProduct.map(({image,title,price,count,id})=>(
                                 <div key={id} className="md:p-7  px-1 py-7 m-3 border-b-2 border-gray-500 flex flex-col gap-7">
                                     <div className="flex text-center items-center md:justify-between ">
-                                        <img src={image} alt="" className="w-[15%]" />
+                                        <img src={image} alt="" className="w-[10%]" />
                                             <p className="text-sm md:text-xl">{title}</p>
                                         <p>{price}</p>
                                     </div>
@@ -55,8 +55,8 @@ const Cart = () => {
                     </div>
                 }
             </div>
-            <div className="w-[70%] my-7 md:w-[30%]">
-                <div className="w-full h-[25%] bg-gray-300 p-5 flex flex-col justify-between text-2xl static md:fixed md:top-[20%] md:w-[20%] lg:h-[20%]">
+            <div className="w-[70%] my-7 md:w-[40%]">
+                <div className="w-full h-[25%] bg-gray-300 p-5 flex flex-col justify-between text-2xl static md:fixed md:top-[20%] md:right-[10%] md:w-[20%] lg:h-[20%]">
                     <p>CART TOTAL</p>
                     <p className="flex items-center justify-between">{getCartTotal() ? getCartTotal() : "$ 0"}<CiCreditCard1 /></p>
                     <Button disabled={cartProduct.length < 1} onClick={()=>{logged ? navigate("/checkout") : navigate("/signin") }}>Check Out</Button>
