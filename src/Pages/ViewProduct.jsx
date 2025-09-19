@@ -17,7 +17,10 @@ const ViewProduct = () => {
     // start param 
     const {productId} = useParams();
     // end param 
+    // start state 
     const [product,setProduct] = useState({});
+    // end state 
+    // get product 
     const getProduct = () => {
         const proSelect = products.find((product)=>{
             return product.id == productId;

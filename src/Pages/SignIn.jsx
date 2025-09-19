@@ -11,37 +11,37 @@ import Store from "../Context/Store";
 
 const SignIn = () => {
     // start state 
-    const [email,setEmail] = useState("");
-    const [stateEmail,setStateEmail] = useState(false);
-    const [password,setPassword] = useState("");
-    const [statePassword,setStatePassword] = useState(false);
+    const [dataUser,setDataUser] = useState({
+        email:"",
+        password:""
+    });
+    const [errForm,setErrForm] = useState({});
     const [load,setLoad] = useState(false);
     // end state 
     // start var 
     const navigate = useNavigate();
+    const reg = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     // end var 
     // start context store 
-    const {users} = useContext(Store);
-    const {setLogged} = useContext(Store);
-    const {setLoggUser} = useContext(Store);
-    const {errDataUser} = useContext(Store);
+    const {users,setLogged,setLoggUser,errDataUser} = useContext(Store);
     // end context store 
+    // validate form 
     const handlForm = (e) => {
+        const newErr = {};
         e.preventDefault();
-        if(!email.includes("@") || email == " ") {
-            setStateEmail(true);
-        } else if(password < 6 || password == " "){
-            setStateEmail(false);
-            setStatePassword(true);
-        } else {
-            setStatePassword(false);
+        if(dataUser.email == "" || !reg.test(dataUser.email)) newErr.email = true;
+        if(dataUser.password == "" || dataUser.password < 6) newErr.password = true;
+        setErrForm(newErr);
+        if(Object.keys(newErr).length == 0){
             signIn();
         }
+        
     }
 
+    // sign in for user 
     const signIn = () => {
         const testDataUser = users.find((user)=>{
-            return user.email == email && user.password == password;
+            return user.email == dataUser.email && user.password == dataUser.password;
         })
         setLoad(!load);
         setTimeout(()=>{
@@ -72,8 +72,8 @@ const SignIn = () => {
                 <p className="text-center text-3xl font-bold">Sign In</p>
                 <form onSubmit={(e)=>handlForm(e)} className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
                     <div className="mb-1 flex flex-col gap-6">
-                        <Input label="Email" className="bg-white" onChange={(e)=>setEmail(e.target.value)} error={stateEmail} />
-                        <Input label="Password" className="bg-white" onChange={(e)=>setPassword(e.target.value)} error={statePassword} />
+                        <Input name="email" value={dataUser.email} label="Email" className="bg-white" onChange={(e)=>setDataUser({...dataUser,[e.target.name]:e.target.value})} error={errForm.email} />
+                        <Input name="password" value={dataUser.password} label="Password" className="bg-white" onChange={(e)=>setDataUser({...dataUser,[e.target.name]:e.target.value})} error={errForm.password} />
                     </div>
                     <div className="flex gap-7">
                         <Button type="submit" loading={load}  className="mt-6">

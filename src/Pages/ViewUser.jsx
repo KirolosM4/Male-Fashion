@@ -21,6 +21,7 @@ const ViewUser = () => {
     // start state 
     const [user,setUser] = useState({});
     // end state 
+    // get user 
     const getUser = () => {
         const userSelect = users.find((user)=>{
             return user.id == userId;

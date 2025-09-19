@@ -1,17 +1,13 @@
 import React, { useContext} from "react"
 import {
-  Card,
   Input,
-  Checkbox,
   Button,
-  Typography,
 } from "@material-tailwind/react";
 import Store from "../Context/Store";
 
 const CheckOut = () => {
     // start context stroe 
-    const {loggUser} = useContext(Store);
-    const {getCartTotal} = useContext(Store);
+    const {loggUser,getCartTotal} = useContext(Store);
     // end context store 
 
     return(

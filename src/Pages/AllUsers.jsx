@@ -7,21 +7,33 @@ import { Link } from "react-router-dom";
 import Swal from 'sweetalert2'
 
 const AllUsers = () => {
+    // start state 
     const [loading,setLoading] = useState(false);
+    const [loadingChangeRole,setLoadingChangeRole] = useState(false);
+    // end state 
+    // start var 
     const TABLE_HEAD = ["User", "Role", "Operation"];
-    const {users} = useContext(Store);
-    const {getAllUsers} = useContext(Store);
-    const makeAndRemAdmin = (id,role) => {
+    // end var 
+    // start context 
+    const {users,getAllUsers} = useContext(Store);
+    // end contxt 
+    // change role user 
+    const changeRole = (id,role) => {
         role == "admin" ? role = "member" : role = "admin";
-        axios({
-            method:"put",
-            url: `${import.meta.env.VITE_API_USERS}/${id}`,
-            data:{role}
-        }).then(()=>{
-            getAllUsers()
-        })
+        setLoadingChangeRole(id)
+        setTimeout(()=>{
+            axios({
+                method:"put",
+                url: `${import.meta.env.VITE_API_USERS}/${id}`,
+                data:{role}
+            }).then(()=>{
+                getAllUsers();
+                setLoadingChangeRole(null);
+            })
+        },2000)
     }
-
+        
+    // del user 
     const delUser = (id,userName,image) => {
         Swal.fire({
             title: `${userName} Will Be Deleted !`,
@@ -65,7 +77,7 @@ const AllUsers = () => {
                     <Link to="/admin/users/addnewuser">Add New User</Link>
                 </Button>
             </div>
-             <Card className="col-start-4 col-span-8 row-start-4 row-span-8 overflow-y-scroll bg-[#475569] text-white ">
+             <Card className="col-start-4 col-span-8 row-start-4 row-span-8 overflow-y-scroll bg-[#475569] text-white h-[50%] md:h-full md:max-h-fit">
                 <table className="w-full min-w-max table-auto text-center">
                     <thead>
                         <tr>
@@ -112,7 +124,7 @@ const AllUsers = () => {
                                 <Button color="blue"><Link to={`/admin/users/viewuser/${id}`}>View</Link></Button>
                                 <Button color="yellow"><Link to={`/admin/users/edituser/${id}`}>EDIT</Link></Button>
                                 <Button loading={loading} color="red" onClick={()=>delUser(id,userName,image)}>Del</Button>
-                                <Button color={role == "admin" ? "gray" : "green"} onClick={()=>makeAndRemAdmin(id,role)}>
+                                <Button loading={loadingChangeRole === id} color={role == "admin" ? "gray" : "green"} onClick={()=>changeRole(id,role)}>
                                     {role == "admin" ? "Remove Admin" : "Make Admin"}
                                 </Button>
                             </Typography>

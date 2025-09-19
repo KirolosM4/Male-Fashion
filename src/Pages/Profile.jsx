@@ -9,14 +9,16 @@ import {Link} from "react-router-dom";
 const Profile = () => {
     // start context store 
     const {loggUser} = useContext(Store)
-
-
     // end context store 
     return(
         <div className="container mx-auto flex flex-col gap-2">
             <p className="p-7 text-2xl font-bold border-b-2 border-gray-500 text-center md:text-left">My Profile</p>
-            <div className="h-[50vh] md:h-[80vh] w-full flex justify-center items-center">
-                <img src={loggUser.image} className="h-[80%] md:h-1/2 md:h-full rounded-full py-5" alt="" />
+            <div className="h-auto w-full flex justify-center items-center">
+            <img
+                src={loggUser.image}
+                className="h-60 w-60 md:h-96 md:w-96 object-cover rounded-full border-4 border-gray-300 shadow-md"
+                alt="Profile"
+            />
             </div>
             <div className="py-5 border-b-2 border-gray-500 flex flex-col gap-2 text-center md:text-left">
                 <p className="text-green-500 font-bold">{loggUser.firstName}</p>

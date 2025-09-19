@@ -15,11 +15,7 @@ const Shop = () => {
     const [hover,setHover] = useState("");
     // end state 
     // start context store 
-    const {products} = useContext(Store);
-    const {dataIsGet} = useContext(Store);
-    const {addToCart} = useContext(Store);
-    const {deleteItem} = useContext(Store);
-    const {errDataPro} = useContext(Store);
+    const {products,dataIsGet,addToCart,deleteItem,errDataPro} = useContext(Store);
     // end context store 
     return(
         <div className={`container mx-auto g my-7 grid  ${dataIsGet ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4" : "h-screen grid-cols-1 justify-items-center items-center w-screen"}`}>

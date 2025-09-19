@@ -4,8 +4,7 @@ import Store from "../Context/Store";
 import { Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 const DashBoard = () => {
-    const {users} = useContext(Store)
-    const {products} = useContext(Store)
+    const {users,products} = useContext(Store)
     return(
         <div className="flex flex-col justify-evenly px-5 h-[70vh] md:grid md:grid-cols-12 md:grid-rows-12 md:h-screen md:gap-11 md:px-0">
             <BoardAdmin/>
